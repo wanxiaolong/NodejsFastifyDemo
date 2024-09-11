@@ -1,0 +1,6 @@
+{
+    "dbHostname": "localhost",
+    "dbPort": 6666,
+    "dbUsername": "development",
+    "dbPassword": "123"
+}

@@ -1,15 +1,16 @@
 import winston from 'winston'
+import config from 'config'
 
 // 创建一个logger
 const logger = winston.createLogger({
     //默认日志级别为info
-    level: 'info',
+    level: config.logLevel || 'info',
     //设置日志的格式
     format: winston.format.combine(
         winston.format.timestamp({
             format: 'YYYY-MM-DD HH:mm:ss.SSS'
         }),
-        winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`),
+        winston.format.json(),
     ),
     transports: [
         //输出日志到console
