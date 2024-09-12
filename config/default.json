@@ -5,9 +5,17 @@
         "logLevel": "debug"
     },
     "db": {
-        "hostname": "localhost",
-        "name": "tempdb",
-        "username": "sa",
-        "password": "Abcd1234"
+        "client": "mssql",
+        "connection": {
+            "requestTimeout": 30000,
+            "options": {
+                "encrypt": false,
+                "enableArithAbort": true
+            }
+        },
+        "migrations": {
+            "tableName": "knex_migrations",
+            "directory": "./db/migrations"
+        }
     }
 }

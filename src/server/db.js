@@ -1,26 +1,9 @@
-import sql from 'mssql'
-import logger from './logger.js'
+import Knex from 'knex'
+import { Model } from 'objection'
 import config from 'config'
 
-const dbConfig = {
-    user: config.db.username,
-    password: config.db.password,
-    server: config.db.hostname,
-    database: config.db.name,
-    options: {
-        encrypt: false,
-        enableArithAbort: true
-    }
-};
+//取出DB配置，初始化Knex实例
+export const knex = Knex(config.db)
 
-export const getConnection = async() => {
-    try {
-        logger.info('connecting DB ...')
-        const pool = await sql.connect(dbConfig);
-        logger.info('connected DB.')
-        return pool;
-    } catch (error) {
-        logger.error('Database connection failed: ', error);
-        throw error;
-    }
-}
+//给 objection.js 绑定 Knex 实例
+Model.knex(knex)

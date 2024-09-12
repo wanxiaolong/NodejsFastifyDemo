@@ -1,10 +1,12 @@
-import { getConnection } from '../../server/db.js'
-import sql from 'mssql'
+import { User } from './user.model.js'
 
 export const getUserById = async (userId) => {
-    const pool = await getConnection();
-    const result = await pool.request()
-        .input('userId', sql.Int, userId)
-        .query('SELECT * FROM "user" WHERE id = @userId');
-    return result.recordset[0];
+    const user = await User.query().findById(userId)
+    return user
 }
+
+export const createUser = async (user) => {
+    const inserted = await User.query().insert(user)
+    return inserted
+}
+

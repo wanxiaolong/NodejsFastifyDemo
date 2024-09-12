@@ -4,6 +4,7 @@ import logger from './server/logger.js'
 import config  from 'config'
 import routes from './apps/index.js'
 import * as hooks from './server/hooks.js'
+import { knex } from './server/db.js'
 
 const server = fastify({
   logger,
@@ -23,4 +24,8 @@ const appOptions = {
   host: config.server.host || "localhost",
   port: config.server.port || 9080
 }
-await server.listen(appOptions);
+await server.listen(appOptions)
+
+//把DB migrate到最新版本
+await knex.migrate.latest()
+

@@ -1,6 +1,11 @@
+
 {
-    "dbHostname": "localhost",
-    "dbPort": 6666,
-    "dbUsername": "development",
-    "dbPassword": "123"
+    "db": {
+        "connection": {
+            "server": "localhost",
+            "user": "sa",
+            "database": "tempdb",
+            "password": "Abcd1234"
+        }
+    }
 }

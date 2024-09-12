@@ -32,6 +32,7 @@ const logger = winston.createLogger({
         new winston.transports.File({ filename: 'logs/combined.log' })
     ],
     exceptionHandlers: [
+        new winston.transports.Console(),
         new winston.transports.File({ filename: 'logs/exception.log' })
     ]
 })
