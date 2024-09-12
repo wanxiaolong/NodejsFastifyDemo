@@ -1,6 +1,13 @@
 {
-    "dbHostname": "localhost",
-    "dbPort": 5555,
-    "dbUsername": "default",
-    "dbPassword": "123"
+    "server": {
+        "host": "localhost",
+        "port": 9080,
+        "logLevel": "debug"
+    },
+    "db": {
+        "hostname": "localhost",
+        "name": "tempdb",
+        "username": "sa",
+        "password": "Abcd1234"
+    }
 }
